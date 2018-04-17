@@ -25,18 +25,16 @@ var ServicioView = Backbone.View.extend({
 		return template_compiled;
 	},
 	mostrarTabla: function(){
-    /*
 		tablaServicio.BorrarTable();
-   	var ajax_dao_alumno = new AjaxPython();
-   	ajax_dao_alumno.Constructor("GET", BASE_URL + "alumno/listar", "", false);
+   	var ajax_dao_servicio = new AjaxPython();
+   	ajax_dao_servicio.Constructor("GET", BASE_URL + "servicio/listar", "", false);
    	tablaServicio.SetTableId("tablaServicio");
    	tablaServicio.SetTableObj("tablaServicio");
-   	tablaServicio.SetTableHeader(alumno_array_json_th);
-   	tablaServicio.SetTableBody(alumno_array_json_td, alumno_array_json_btn_td, ajax_dao_alumno);
-   	tablaServicio.SetTableFooter(alumno_array_json_btn, false);
+   	tablaServicio.SetTableHeader(servicio_array_json_th);
+   	tablaServicio.SetTableBody(servicio_array_json_td, servicio_array_json_btn_td, ajax_dao_servicio);
+   	tablaServicio.SetTableFooter(servicio_array_json_btn, false);
    	tablaServicio.SetLabelMensaje("#txtMensajeRpta");
-   	tablaServicio.SetURLGuardar(BASE_URL + "alumno/guardar");
+   	tablaServicio.SetURLGuardar(BASE_URL + "servicio/guardar");
    	tablaServicio.MostrarTable();
-    */
 	}
 });

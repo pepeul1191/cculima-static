@@ -1,8 +1,11 @@
+var ambienteDetalleView = new AmbienteDetalleView({});
+
 var Router = Marionette.AppRouter.extend({
     routes: {
       'email/:email': 'showEmail',
       "" : "index",
       "ambiente": "ambiente",
+      "ambiente/crear": "ambienteCrear",
       "concierto": "concierto",
       "exposicion": "exposicion",
       "servicio": "servicio",
@@ -22,6 +25,9 @@ var Router = Marionette.AppRouter.extend({
       var ambienteView = new AmbienteView({});
       ambienteView.render();
       ambienteView.mostrarTabla();
+    },
+    ambienteCrear: function() {
+      ambienteDetalleView.renderCrear();
     },
     concierto: function() {
       var conciertoView = new ConciertoView({});

@@ -1,0 +1,77 @@
+<script id="ambiente-detelle-template" type="text/x-handlebars-template">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{titulo_modal}}</h4>
+      </div>
+      <div class="modal-body">
+        <label class="texto-der" id="txtMensajeRptaAmbienteDetalle"></label>
+        <label class="oculto" id="lblIdAmbiente">{{id}}</label>
+        <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+                <label for="txtNombre">Nombre</label><span class="texto-validacion"></span>
+                <input type="text" class="form-control" id="txtNombre" value="{{nombre}}" {{#if disabled}}disabled{{/if}}>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="txtSubtitulo">Subtítulo</label><span class="texto-validacion"></span>
+                <input type="text" class="form-control" id="txtSubtitulo" value="{{subtitulo}}" {{#if disabled}}disabled{{/if}}>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+                <label for="txtParrafoIzquierdo">Párrafo Izquierda</label><span class="texto-validacion"></span>
+                <textarea name="txtParrafoIzquierdo" id="txtParrafoIzquierdo" {{#if disabled}}disabled{{/if}}>{{parrafo_izquierdo}}</textarea>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="txtParrafoDerecho">Párrafo Derecho</label><span class="texto-validacion"></span>
+                <textarea name="txtParrafoDerecho" id="txtParrafoDerecho" {{#if disabled}}disabled{{/if}}>{{parrafo_derecho}}</textarea>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="txtTelefono">Teléfono</label><span class="texto-validacion"></span>
+              <input type="text" class="form-control" id="txtTelefono" value="{{telefono}}" {{#if disabled}}disabled{{/if}}>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="txtDireccion">Dirección</label><span class="texto-validacion"></span>
+              <input type="text" class="form-control" id="txtDireccion" value="{{direccion}}" {{#if disabled}}disabled{{/if}}>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="txtLatitud">Latitud</label><span class="texto-validacion"></span>
+              <input type="text" class="form-control" id="txtLatitud" value="{{latitud}}" {{#if disabled}}disabled{{/if}}>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="txtLongitud">Longitud</label><span class="texto-validacion"></span>
+              <input type="text" class="form-control" id="txtLongitud" value="{{longitud}}" {{#if disabled}}disabled{{/if}}>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-default pull-right" id="btnGuardarDetalleAmbiente"><i class="fa fa-check" aria-hidden="true"></i>Guardar Cambios</button>
+          </div>
+        </div>
+        <hr>
+        <div class="row" style="margin-bottom:20px">
+          <h4 class="modal-title">Imágenes del Ambiente</h4>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+</script>

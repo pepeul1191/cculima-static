@@ -25,18 +25,16 @@ var TeatroView = Backbone.View.extend({
 		return template_compiled;
 	},
 	mostrarTabla: function(){
-    /*
 		tablaTeatro.BorrarTable();
-   	var ajax_dao_alumno = new AjaxPython();
-   	ajax_dao_alumno.Constructor("GET", BASE_URL + "alumno/listar", "", false);
+   	var ajax_dao_teatro = new AjaxPython();
+   	ajax_dao_teatro.Constructor("GET", BASE_URL + "teatro/listar", "", false);
    	tablaTeatro.SetTableId("tablaTeatro");
    	tablaTeatro.SetTableObj("tablaTeatro");
-   	tablaTeatro.SetTableHeader(alumno_array_json_th);
-   	tablaTeatro.SetTableBody(alumno_array_json_td, alumno_array_json_btn_td, ajax_dao_alumno);
-   	tablaTeatro.SetTableFooter(alumno_array_json_btn, false);
+   	tablaTeatro.SetTableHeader(teatro_array_json_th);
+   	tablaTeatro.SetTableBody(teatro_array_json_td, teatro_array_json_btn_td, ajax_dao_teatro);
+   	tablaTeatro.SetTableFooter(teatro_array_json_btn, false);
    	tablaTeatro.SetLabelMensaje("#txtMensajeRpta");
-   	tablaTeatro.SetURLGuardar(BASE_URL + "alumno/guardar");
+   	tablaTeatro.SetURLGuardar(BASE_URL + "teatro/guardar");
    	tablaTeatro.MostrarTable();
-    */
 	}
 });

@@ -25,18 +25,16 @@ var ConciertoView = Backbone.View.extend({
 		return template_compiled;
 	},
 	mostrarTabla: function(){
-    /*
 		tablaConcierto.BorrarTable();
-   	var ajax_dao_alumno = new AjaxPython();
-   	ajax_dao_alumno.Constructor("GET", BASE_URL + "alumno/listar", "", false);
+   	var ajax_dao_concierto = new AjaxPython();
+   	ajax_dao_concierto.Constructor("GET", BASE_URL + "concierto/listar", "", false);
    	tablaConcierto.SetTableId("tablaConcierto");
    	tablaConcierto.SetTableObj("tablaConcierto");
-   	tablaConcierto.SetTableHeader(alumno_array_json_th);
-   	tablaConcierto.SetTableBody(alumno_array_json_td, alumno_array_json_btn_td, ajax_dao_alumno);
-   	tablaConcierto.SetTableFooter(alumno_array_json_btn, false);
+   	tablaConcierto.SetTableHeader(concierto_array_json_th);
+   	tablaConcierto.SetTableBody(concierto_array_json_td, concierto_array_json_btn_td, ajax_dao_concierto);
+   	tablaConcierto.SetTableFooter(concierto_array_json_btn, false);
    	tablaConcierto.SetLabelMensaje("#txtMensajeRpta");
    	tablaConcierto.SetURLGuardar(BASE_URL + "alumno/guardar");
    	tablaConcierto.MostrarTable();
-    */
 	}
 });

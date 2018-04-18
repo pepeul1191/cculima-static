@@ -1,4 +1,4 @@
-var tabladStandUp = new Grid();
+var tablaStandUp = new Grid();
 
 var StandUpView = Backbone.View.extend({
 	el: '#workspace',
@@ -25,18 +25,16 @@ var StandUpView = Backbone.View.extend({
 		return template_compiled;
 	},
 	mostrarTabla: function(){
-    /*
-		tabladStandUp.BorrarTable();
-   	var ajax_dao_alumno = new AjaxPython();
-   	ajax_dao_alumno.Constructor("GET", BASE_URL + "alumno/listar", "", false);
-   	tabladStandUp.SetTableId("tabladStandUp");
-   	tabladStandUp.SetTableObj("tabladStandUp");
-   	tabladStandUp.SetTableHeader(alumno_array_json_th);
-   	tabladStandUp.SetTableBody(alumno_array_json_td, alumno_array_json_btn_td, ajax_dao_alumno);
-   	tabladStandUp.SetTableFooter(alumno_array_json_btn, false);
-   	tabladStandUp.SetLabelMensaje("#txtMensajeRpta");
-   	tabladStandUp.SetURLGuardar(BASE_URL + "alumno/guardar");
-   	tabladStandUp.MostrarTable();
-    */
+		tablaStandUp.BorrarTable();
+   	var ajax_dao_stand_up = new AjaxPython();
+   	ajax_dao_stand_up.Constructor("GET", BASE_URL + "stand_up/listar", "", false);
+   	tablaStandUp.SetTableId("tablaStandUp");
+   	tablaStandUp.SetTableObj("tablaStandUp");
+   	tablaStandUp.SetTableHeader(stand_up_array_json_th);
+   	tablaStandUp.SetTableBody(stand_up_array_json_td, stand_up_array_json_btn_td, ajax_dao_stand_up);
+   	tablaStandUp.SetTableFooter(stand_up_array_json_btn, false);
+   	tablaStandUp.SetLabelMensaje("#txtMensajeRpta");
+   	tablaStandUp.SetURLGuardar(BASE_URL + "stand_up/guardar");
+   	tablaStandUp.MostrarTable();
 	}
 });

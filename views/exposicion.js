@@ -25,18 +25,16 @@ var ExposicionView = Backbone.View.extend({
 		return template_compiled;
 	},
 	mostrarTabla: function(){
-    /*
 		tablaExposicion.BorrarTable();
-   	var ajax_dao_alumno = new AjaxPython();
-   	ajax_dao_alumno.Constructor("GET", BASE_URL + "alumno/listar", "", false);
+   	var ajax_dao_exposicion = new AjaxPython();
+   	ajax_dao_exposicion.Constructor("GET", BASE_URL + "exposicion/listar", "", false);
    	tablaExposicion.SetTableId("tablaExposicion");
    	tablaExposicion.SetTableObj("tablaExposicion");
-   	tablaExposicion.SetTableHeader(alumno_array_json_th);
-   	tablaExposicion.SetTableBody(alumno_array_json_td, alumno_array_json_btn_td, ajax_dao_alumno);
-   	tablaExposicion.SetTableFooter(alumno_array_json_btn, false);
+   	tablaExposicion.SetTableHeader(exposicion_array_json_th);
+   	tablaExposicion.SetTableBody(exposicion_array_json_td, exposicion_array_json_btn_td, ajax_dao_exposicion);
+   	tablaExposicion.SetTableFooter(exposicion_array_json_btn, false);
    	tablaExposicion.SetLabelMensaje("#txtMensajeRpta");
-   	tablaExposicion.SetURLGuardar(BASE_URL + "alumno/guardar");
+   	tablaExposicion.SetURLGuardar(BASE_URL + "exposicion/guardar");
    	tablaExposicion.MostrarTable();
-    */
 	}
 });

@@ -7,6 +7,8 @@ var Ambiente = Backbone.Model.extend({
     this.datos_generales_valido = false;
     this.datos_contrasenias_valido = false;
   },
+  events: {
+	},
   validarDatosGenerales: function() {
     if(this.get("usuario_valido") == true && this.get("correo_valido") == true && this.get("usuario_lleno") == true){
       this.set({datos_generales_valido : true});

@@ -71,6 +71,32 @@
         <div class="row" style="margin-bottom:20px">
           <h4 class="modal-title">Imágenes del Ambiente</h4>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group" style="margin-bottom:10px">
+              <label for="txtLongitud" style="width:100%">Foto Principal</label>
+              <label id="imagen_principal_id" class="oculto">{if isset($imgen_principal->{'id'})}{$imgen_principal->{'id'}}{/if}</label>
+						  <input type="file" id="input_file_ambiente_principal" name="myFile" type="file" class=""/>
+              <button id="buscar_file_ambiente_principal" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar Archivo</button>
+              <button id="upload_file_ambiente_principal" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-upload" aria-hidden="true"></i>Subir Archivo</button>
+    					<a href="{if isset($imgen_principal->{'ruta_documento'})}http://{Url::get_service('ftp')}/{$imgen_principal->{'ruta_documento'}}{else}'#'{/if}"  target="_blank" id="view_file_principal" class="btn btn-default btn-file pull-left {if !isset($imgen_principal->{'ruta_documento'})}oculto{/if}"><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver Archivo</a>
+    					<progress id="progbar_principal" value="0" min="0" max="100" class="oculto" role=""></progress>
+            </div>
+            <div class="form-group">
+              <label for="txtLongitud" style="width:100%">Foto Menu</label>
+              <input type="file" id="input_file_ambiente_menu" name="myFile" type="file" class=""/>
+              <button id="buscar_file_ambiente_menu" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar Archivo</button>
+              <button id="upload_file_ambiente_menu" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-upload" aria-hidden="true"></i>Subir Archivo</button>
+    					<a href="{if isset($imgen_menu->{'ruta_documento'})}http://{Url::get_service('ftp')}/{$imgen_menu->{'ruta_documento'}}{else}'#'{/if}"  target="_blank" id="view_file_menu" class="btn btn-default btn-file pull-left {if !isset($imgen_menu->{'ruta_documento'})}oculto{/if}"><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver Archivo</a>
+    					<progress id="progbar_menu" value="0" min="0" max="100" class="oculto" role=""></progress>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" style="margin-bottom:10px">
+              <label for="txtLongitud" style="width:100%">Fotos Galería</label>
+            </div>
+          </div>
+        </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div>

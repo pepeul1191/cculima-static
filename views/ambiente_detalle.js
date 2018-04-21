@@ -85,8 +85,14 @@ var AmbienteDetalleView = Backbone.View.extend({
 		var template = Handlebars.compile(source);
 		var html = template(context);
 		this.$el.html(html);
-    CKEDITOR.replace('txtParrafoIzquierdo');
-    CKEDITOR.replace('txtParrafoDerecho');
+    CKEDITOR.replace('txtParrafoIzquierdo',{
+      toolbar : 'Basic',
+      removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript,PasteFromWord,Link,Table,Image,Scayt,Unlink,PasteText,HorizontalRule,SpecialChar,Maximize,Outdent,Indent,Blockquote,RemoveFormat,Source,About',
+    });
+    CKEDITOR.replace('txtParrafoDerecho',{
+      toolbar : 'Basic',
+      removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript,PasteFromWord,Link,Table,Image,Scayt,Unlink,PasteText,HorizontalRule,SpecialChar,Maximize,Outdent,Indent,Blockquote,RemoveFormat,Source,About',
+    });
   },
 	getTemplate: function(data) {
 		var template = null;

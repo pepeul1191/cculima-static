@@ -10,7 +10,7 @@ var AmbienteDetalleView = Backbone.View.extend({
     "click #buscar_file_ambiente_principal": "triggerFilePrincipal",
     "click #upload_file_ambiente_principal": "subirFilePrincipal",
     "click #buscar_file_ambiente_menu": "triggerFileMenu",
-    //input_file_ambiente_principal
+    "click #upload_file_ambiente_menu": "subirFileMenu",
     //input_file_ambiente_menu
 	},
   triggerFilePrincipal: function() {
@@ -27,16 +27,17 @@ var AmbienteDetalleView = Backbone.View.extend({
       function(mensaje){
         console.log(mensaje);
         if(mensaje['tipo_mensaje'] == 'success'){
-          $("#imagen_dni_id").html(mensaje['mensaje'][1]);
-          $("#txtMensajeRptaImagenes").html(mensaje['mensaje'][0]);
-          $("#txtMensajeRptaImagenes").removeClass("color-rojo");
-          $("#txtMensajeRptaImagenes").addClass("color-success");
-          $("#view_file_dni").removeClass("oculto");
-          $("#view_file_dni").attr("href", mensaje['mensaje'][2]);
+          $("#imagen_principal_id").html(mensaje['mensaje'][1]);
+          $("#txtMensajeRptaAmbienteDetalle").html(mensaje['mensaje'][0]);
+          $("#txtMensajeRptaAmbienteDetalle").removeClass("color-rojo");
+          $("#txtMensajeRptaAmbienteDetalle").addClass("color-success");
+          $("#view_file_principal").removeClass("oculto");
+          $("#btnAsociarPrincipalAmbiente").removeClass("oculto");
+          $("#view_file_principal").attr("href", mensaje['mensaje'][2]);
         }else{
-          $("#txtMensajeRptaImagenes").removeClass("color-success");
-          $("#txtMensajeRptaImagenes").addClass("color-rojo");
-          $("#txtMensajeRptaImagenes").html(mensaje['mensaje'][0]);
+          $("#txtMensajeRptaAmbienteDetalle").removeClass("color-success");
+          $("#txtMensajeRptaAmbienteDetalle").addClass("color-rojo");
+          $("#txtMensajeRptaAmbienteDetalle").html(mensaje['mensaje'][0]);
         }
         event.preventDefault();
       },
@@ -47,6 +48,35 @@ var AmbienteDetalleView = Backbone.View.extend({
   },
   triggerFileMenu: function() {
     $("#input_file_ambiente_menu").trigger("click");
+  },
+  subirFileMenu: function(){
+    $("#input_file_ambiente_menu").upload(
+      BASE_URL + "ambiente/subir_princial",
+      {
+       nombre : "Imagen 1 nombre",
+       descripcion : "Imagen 1 descripcion"
+      },
+      function(mensaje){
+        console.log(mensaje);
+        if(mensaje['tipo_mensaje'] == 'success'){
+          $("#imagen_menu_id").html(mensaje['mensaje'][1]);
+          $("#txtMensajeRptaAmbienteDetalle").html(mensaje['mensaje'][0]);
+          $("#txtMensajeRptaAmbienteDetalle").removeClass("color-rojo");
+          $("#txtMensajeRptaAmbienteDetalle").addClass("color-success");
+          $("#view_file_menu").removeClass("oculto");
+          $("#btnAsociarMenuAmbiente").removeClass("oculto");
+          $("#view_file_menu").attr("href", mensaje['mensaje'][2]);
+        }else{
+          $("#txtMensajeRptaAmbienteDetalle").removeClass("color-success");
+          $("#txtMensajeRptaAmbienteDetalle").addClass("color-rojo");
+          $("#txtMensajeRptaAmbienteDetalle").html(mensaje['mensaje'][0]);
+        }
+        event.preventDefault();
+      },
+      $("#progbar_dni"),
+      $("#upload_file_dni")
+    );
+    event.preventDefault();
   },
 	render: function(context) {
 		$("#btnModal").click();

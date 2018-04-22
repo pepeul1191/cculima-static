@@ -19,7 +19,7 @@ var AmbienteDetalleView = Backbone.View.extend({
   subirFilePrincipal: function() {
     //$("#view_file_dni").addClass("oculto");
     $("#input_file_ambiente_principal").upload(
-      BASE_URL + "ambiente/subir_princial",
+      BASE_URL + "archivo/subir",
       {
        nombre : "Imagen 1 nombre",
        descripcion : "Imagen 1 descripcion"
@@ -51,7 +51,7 @@ var AmbienteDetalleView = Backbone.View.extend({
   },
   subirFileMenu: function(){
     $("#input_file_ambiente_menu").upload(
-      BASE_URL + "ambiente/subir_princial",
+      BASE_URL + "archivo/subir",
       {
        nombre : "Imagen 1 nombre",
        descripcion : "Imagen 1 descripcion"
@@ -113,6 +113,19 @@ var AmbienteDetalleView = Backbone.View.extend({
 		};
     this.render(context);
 	},
+  mostrarTablaGaleria: function(){
+    tablaAmbienteGaleria.BorrarTable();
+    var ajax_dao_ambiente_galeria = new AjaxPython();
+    ajax_dao_ambiente_galeria.Constructor("GET", BASE_URL + "ambiente/galeria/listar", "", false);
+    tablaAmbienteGaleria.SetTableId("tablaAmbienteGaleria");
+    tablaAmbienteGaleria.SetTableObj("tablaAmbienteGaleria");
+    tablaAmbienteGaleria.SetTableHeader(ambiente_galeria_array_json_th);
+    tablaAmbienteGaleria.SetTableBody(ambiente_galeria_array_json_td, ambiente_galeria_array_json_btn_td, ajax_dao_ambiente_galeria);
+    tablaAmbienteGaleria.SetTableFooter(ambiente_galeria_array_json_btn, false);
+    tablaAmbienteGaleria.SetLabelMensaje("#txtMensajeRpta");
+    tablaAmbienteGaleria.SetURLGuardar(BASE_URL + "ambiente/guardar");
+    tablaAmbienteGaleria.MostrarTable();
+  },
 	renderEditar: function(evento_id) {
 		var evento = this.model.id(evento_id);
 		if (evento.status == 500){

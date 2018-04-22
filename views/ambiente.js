@@ -1,4 +1,5 @@
 var tablaAmbiente = new Grid();
+var tablaAmbienteGaleria = new Grid();
 
 var AmbienteView = Backbone.View.extend({
 	el: '#workspace',
@@ -33,7 +34,7 @@ var AmbienteView = Backbone.View.extend({
    	tablaAmbiente.SetTableHeader(ambiente_array_json_th);
    	tablaAmbiente.SetTableBody(ambiente_array_json_td, ambiente_array_json_btn_td, ajax_dao_ambiente);
    	tablaAmbiente.SetTableFooter(ambiente_array_json_btn, false);
-   	tablaAmbiente.SetLabelMensaje("#txtMensajeRpta");
+   	tablaAmbiente.SetLabelMensaje("#txtMensajeRptaAmbienteDetalle");
    	tablaAmbiente.SetURLGuardar(BASE_URL + "ambiente/guardar");
    	tablaAmbiente.MostrarTable();
 	}

@@ -28,6 +28,7 @@ var Router = Marionette.AppRouter.extend({
     },
     ambienteCrear: function() {
       ambienteDetalleView.renderCrear();
+      ambienteDetalleView.mostrarTablaGaleria();
     },
     concierto: function() {
       var conciertoView = new ConciertoView({});

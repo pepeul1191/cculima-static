@@ -11,6 +11,7 @@ var AmbienteDetalleView = Backbone.View.extend({
     "click #upload_file_ambiente_principal": "subirFilePrincipal",
     "click #buscar_file_ambiente_menu": "triggerFileMenu",
     "click #upload_file_ambiente_menu": "subirFileMenu",
+    "click #btnGuardarDetalleAmbiente": "GuardarDetalle",
     //input_file_ambiente_menu
 	},
   triggerFilePrincipal: function() {
@@ -114,6 +115,9 @@ var AmbienteDetalleView = Backbone.View.extend({
     this.render(context);
 	},
   mostrarTablaGaleria: function(){
+    var array_extra_data = [
+			{tipo: "label", llave: "ambiente_id", id : "lblIdAmbiente"}
+		];
     tablaAmbienteGaleria.BorrarTable();
     var ajax_dao_ambiente_galeria = new AjaxPython();
     ajax_dao_ambiente_galeria.Constructor("GET", BASE_URL + "ambiente/galeria/listar", "", false);
@@ -124,6 +128,7 @@ var AmbienteDetalleView = Backbone.View.extend({
     tablaAmbienteGaleria.SetTableFooter(ambiente_galeria_array_json_btn, false);
     tablaAmbienteGaleria.SetLabelMensaje("#txtMensajeRpta");
     tablaAmbienteGaleria.SetURLGuardar(BASE_URL + "ambiente/guardar");
+    tablaAmbienteGaleria.SetExtraData(array_extra_data);
     tablaAmbienteGaleria.MostrarTable();
   },
 	renderEditar: function(evento_id) {
@@ -137,4 +142,21 @@ var AmbienteDetalleView = Backbone.View.extend({
 	    this.render(context);
 		}
 	},
+  GuardarDetalle: function(){
+    var rpta = this.model.guardar();
+    rpta = JSON.parse(rpta);
+		if(rpta['tipo_mensaje'] == "error"){
+			$("#txtMensajeRptaAmbienteDetalle").removeClass("color-success");
+			$("#txtMensajeRptaAmbienteDetalle").addClass("color-rojo");
+			$("#txtMensajeRptaAmbienteDetalle").html(rpta['mensaje'][0]);
+		}else{
+			$("#txtMensajeRptaAmbienteDetalle").removeClass("color-rojo");
+			$("#txtMensajeRptaAmbienteDetalle").addClass("color-success");
+			$("#txtMensajeRptaAmbienteDetalle").html(rpta['mensaje'][0]);
+			if ($("#lblIdAmbiente").html() == "E"){
+				$("#lblIdAmbiente").html(rpta['mensaje'][1]);
+				$(".modal-title").html("Editar Ambiente");
+			}
+		}
+  },
 });

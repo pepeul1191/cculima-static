@@ -1,42 +1,53 @@
 var Ambiente = Backbone.Model.extend({
   initialize: function() {
+    /*
     this.usuario_valido = false;
     this.usuario_lleno = false;
     this.correo_valido = false;
     this.contrasenia_valido = false;
     this.datos_generales_valido = false;
     this.datos_contrasenias_valido = false;
+    */
   },
   events: {
 	},
   validarDatosGenerales: function() {
+    /*
     if(this.get("usuario_valido") == true && this.get("correo_valido") == true && this.get("usuario_lleno") == true){
       this.set({datos_generales_valido : true});
     }else{
       this.set({datos_generales_valido : false});
     }
+    */
   },
   validarContrasenias: function() {
+    /*
     if(this.get("contrasenia_valido") == true){
         this.set({datos_contrasenias_valido : true});
     }else{
         this.set({datos_contrasenias_valido : false});
     }
+    */
   },
   datosGeneralesToJSON: function() {
+    /*
     var usuario = new Object();
     usuario.id = $("#idUsuario").html();
     usuario.usuario = $("#txtUsuario").val();
     usuario.correo = $("#txtCorreo").val();
     return usuario;
+    */
   },
   datosContraseniasToJSON: function() {
+    /*
     var usuario = new Object();
     usuario.id = $("#idUsuario").html();
     usuario.contrasenia = $("#txtContraseniaNueva").val();
     return usuario;
+    */
   },
   id: function(evento_id){
+    /*
     var rpta = null;
 		$.ajax({
    		type: "GET",
@@ -52,25 +63,25 @@ var Ambiente = Backbone.Model.extend({
    		}
    	});
     return rpta;
+    */
   },
   guardar: function(){
-    var evento = {
-			_id: $("#lblIdEvento").html(),
-			nombre: $("#txtNombre").val(),
-			nombre_url: $("#txtNombreURL").val(),
-			lugar: $("#txtLugar").val(),
-			direccion: $("#txtDireccion").val(),
-			dia_inicio: $("#txtFechaInicio").val(),
-			dia_fin: $("#txtFechaFin").val(),
-			hora_inicio: $("#txtHoraInicio").val(),
-			hora_fin: $("#txtHoraFin").val(),
-			descripcion: CKEDITOR.instances['txtDescripcionEvento'].getData(),
-		}
+    var externo = {
+      _id: $("#lblIdAmbiente").html(),
+      nombre: $("#txtNombre").val(),
+      subtitulo: $("#txtSubtitulo").val(),
+      parrafo_izq: CKEDITOR.instances.txtParrafoIzquierdo.getData(),
+      parrafo_der: CKEDITOR.instances.txtParrafoDerecho.getData(),
+      telefono: $("#txtTelefono").val(),
+      direccion: $("#txtDireccion").val(),
+      latitud: $("#txtLatitud").val(),
+      longitud: $("#txtLongitud").val(),
+    };
     var rpta = null;
 		$.ajax({
    		type: "POST",
-   		url: BASE_URL + "evento/guardar_detalle",
-   		data: {data: JSON.stringify(evento), csrfmiddlewaretoken: CSRF},
+   		url: BASE_URL + "ambiente/guardar_detalle",
+   		data: {data: JSON.stringify(externo), csrfmiddlewaretoken: CSRF},
    		async: false,
    		success: function(data){
 				rpta = data;

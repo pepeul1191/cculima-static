@@ -23,3 +23,10 @@ var ambiente_galeria_array_json_btn = [
   {tipo: "agrega_fila", operacion:"AgregarFila", icono: "fa fa-plus", label: "Agregar Registro", clase: "boton-tabla  mootools"},
 	{tipo: "guardar_tabla", operacion:"GuardarTabla", icono: "fa fa-check", label: "Guardar Cambios", clase: "boton-tabla  mootools" }
 ];
+
+
+var ambiente_galeria_array_json_btn_td_ver = [
+  {clase:"fa fa-search",url:"",alt:"Ver archivo",estilos:"padding-left: 25px;", operacion:"VerArchivoTab", 'td_archivo_id': 2, 'url': BASE_URL + 'ambiente/galeria/obtener_ruta_foto/'},
+];
+
+var ambiente_galeria_array_json_btn_ver = [];

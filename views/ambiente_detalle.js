@@ -155,7 +155,24 @@ var AmbienteDetalleView = Backbone.View.extend({
     tablaAmbienteGaleria.SetTableHeader(ambiente_galeria_array_json_th);
     tablaAmbienteGaleria.SetTableBody(ambiente_galeria_array_json_td, ambiente_galeria_array_json_btn_td, ajax_dao_ambiente_galeria);
     tablaAmbienteGaleria.SetTableFooter(ambiente_galeria_array_json_btn, false);
-    tablaAmbienteGaleria.SetLabelMensaje("#txtMensajeRpta");
+    tablaAmbienteGaleria.SetLabelMensaje("#txtMensajeRptaAmbienteDetalle");
+    tablaAmbienteGaleria.SetURLGuardar(BASE_URL + "ambiente/galeria/guardar");
+    tablaAmbienteGaleria.SetExtraData(array_extra_data);
+    tablaAmbienteGaleria.MostrarTable();
+  },
+  mostrarTablaGaleriaVer: function(ambiente_id){
+    var array_extra_data = [
+			{tipo: "label", llave: "ambiente_id", id : "lblIdAmbiente"}
+		];
+    tablaAmbienteGaleria.BorrarTable();
+    var ajax_dao_ambiente_galeria = new AjaxPython();
+    ajax_dao_ambiente_galeria.Constructor("GET", BASE_URL + "ambiente/galeria/listar/" + ambiente_id, "", false);
+    tablaAmbienteGaleria.SetTableId("tablaAmbienteGaleria");
+    tablaAmbienteGaleria.SetTableObj("tablaAmbienteGaleria");
+    tablaAmbienteGaleria.SetTableHeader(ambiente_galeria_array_json_th);
+    tablaAmbienteGaleria.SetTableBody(ambiente_galeria_array_json_td, ambiente_galeria_array_json_btn_td_ver, ajax_dao_ambiente_galeria);
+    tablaAmbienteGaleria.SetTableFooter(ambiente_galeria_array_json_btn_ver, false);
+    tablaAmbienteGaleria.SetLabelMensaje("#txtMensajeRptaAmbienteDetalle");
     tablaAmbienteGaleria.SetURLGuardar(BASE_URL + "ambiente/galeria/guardar");
     tablaAmbienteGaleria.SetExtraData(array_extra_data);
     tablaAmbienteGaleria.MostrarTable();
@@ -168,6 +185,18 @@ var AmbienteDetalleView = Backbone.View.extend({
 			var context = JSON.parse(ambiente);
 			context.id = ambiente_id;
 			context.titulo_modal = "Editar Ambiente";
+	    this.render(context);
+		}
+	},
+  renderVer: function(ambiente_id) {
+		var ambiente = this.model.id(ambiente_id);
+		if (ambiente.status == 500){
+			alert("error en ajax");
+		}else{
+			var context = JSON.parse(ambiente);
+			context.id = ambiente_id;
+			context.titulo_modal = "Ver Ambiente";
+      context.disabled = true;
 	    this.render(context);
 		}
 	},

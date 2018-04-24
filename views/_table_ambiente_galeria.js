@@ -15,7 +15,7 @@ var ambiente_galeria_array_json_td = [
 var ambiente_galeria_array_json_btn_td = [
   {clase:"fa fa-picture-o",url:"",alt:"Seleccionar archivo",estilos:"padding-left: 5px;", operacion:"SeleccionarArchivoFila"},
   {clase:"fa fa-cloud-upload",url:"",alt:"Subir archivo",estilos:"padding-left: 5px;", operacion:"SubirArchivoFila", url: BASE_URL + "archivo/subir", validacion: {'extensiones':["image/jpeg", "image/jpg", "image/png"], 'tamanio': 4070000}, 'td_archivo_id': 2},
-  {clase:"fa fa-search",url:"",alt:"Ver archivo",estilos:"padding-left: 5px;", operacion:"VerArchivoTab", 'td_archivo_id': 2, 'url': BASE_URL + 'agricultores/campo/obtener_ruta_foto/'},
+  {clase:"fa fa-search",url:"",alt:"Ver archivo",estilos:"padding-left: 5px;", operacion:"VerArchivoTab", 'td_archivo_id': 2, 'url': BASE_URL + 'ambiente/galeria/obtener_ruta_foto/'},
   {clase:"fa fa-times",url:"",alt:"Eliminar asociación",estilos:"padding-left: 5px;", operacion:"QuitarFila"},
 ];
 

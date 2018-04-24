@@ -34,7 +34,7 @@ var AmbienteView = Backbone.View.extend({
    	tablaAmbiente.SetTableHeader(ambiente_array_json_th);
    	tablaAmbiente.SetTableBody(ambiente_array_json_td, ambiente_array_json_btn_td, ajax_dao_ambiente);
    	tablaAmbiente.SetTableFooter(ambiente_array_json_btn, false);
-   	tablaAmbiente.SetLabelMensaje("#txtMensajeRptaAmbienteDetalle");
+   	tablaAmbiente.SetLabelMensaje("#txtMensajeRpta");
    	tablaAmbiente.SetURLGuardar(BASE_URL + "ambiente/guardar");
    	tablaAmbiente.MostrarTable();
 	},

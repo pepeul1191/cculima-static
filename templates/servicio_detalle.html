@@ -1,0 +1,65 @@
+<script id="servicio-detelle-template" type="text/x-handlebars-template">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{titulo_modal}}</h4>
+      </div>
+      <div class="modal-body">
+        <label class="texto-der mensaje-full-width" id="txtMensajeRptaServicioDetalle"></label>
+        <label class="oculto" id="lblIdServicio">{{id}}</label>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="txtNombre">Nombre</label><span class="texto-validacion"></span>
+              <input type="text" class="form-control" id="txtNombre" value="{{nombre}}" {{#if disabled}}disabled{{/if}}>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="txtDireccion">Dirección</label><span class="texto-validacion"></span>
+              <input type="text" class="form-control" id="txtDireccion" value="{{direccion}}" {{#if disabled}}disabled{{/if}}>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="txtDescripcion">Descripción</label><span class="texto-validacion"></span>
+              <textarea name="txtDescripcion" id="txtDescripcion" {{#if disabled}}disabled{{/if}}>{{descripcion}}</textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="txtLatitud">Latitud</label><span class="texto-validacion"></span>
+              <input type="text" class="form-control" id="txtLatitud" value="{{latitud}}" {{#if disabled}}disabled{{/if}}>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="txtLongitud">Longitud</label><span class="texto-validacion"></span>
+              <input type="text" class="form-control" id="txtLongitud" value="{{longitud}}" {{#if disabled}}disabled{{/if}}>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-default pull-right" style="margin-top:20px" id="btnGuardarDetalleServicio" {{#if disabled}}disabled{{/if}}><i class="fa fa-check" aria-hidden="true"></i>Guardar Cambios</button>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" style="margin-bottom:10px">
+              <label style="width:100%">Foto Principal</label>
+              <label id="foto_id" class="oculto">{{foto}}</label>
+              <input type="file" id="input_file_foto" name="myFile" type="file" class="oculto"/>
+              <button id="buscar_file_foto" {{#if disabled}}disabled{{/if}} class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar </button>
+              <button id="upload_file_foto" {{#if disabled}}disabled{{/if}} class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-upload" aria-hidden="true"></i>Subir </button>
+              <a href="{{foto_url}}"  target="_blank" id="view_file_foto" class="btn btn-default btn-file pull-left {{#ifEquals foto ''}}oculto{{/ifEquals}}"><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
+              <button type="button" {{#if disabled}}disabled{{/if}} class="btn btn-default {{#ifEquals foto ''}}oculto{{/ifEquals}}" id="btnAsociarFoto"><i class="fa fa-check" aria-hidden="true"></i>Asociar Imagen</button>
+              <progress id="progbar_principal" value="0" min="0" max="100" class="oculto" role=""></progress>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+</script>

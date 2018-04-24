@@ -92,5 +92,22 @@ var Ambiente = Backbone.Model.extend({
    		}
    	});
     return rpta;
-  }
+  },
+  asociarPrincipalAmbiente: function(ambiente_id, imagen_principal_id){
+    var rpta = null;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "ambiente/asociar_imagen_princial",
+      data: {ambiente_id: ambiente_id, imagen_principal_id: imagen_principal_id ,csrfmiddlewaretoken: CSRF},
+      async: false,
+      success: function(data){
+        rpta = data;
+      },
+      error: function(data){
+        console.log("error");
+        rpta = data;
+      }
+    });
+    return rpta;
+  },
 });

@@ -11,7 +11,8 @@ var AmbienteDetalleView = Backbone.View.extend({
     "click #upload_file_ambiente_principal": "subirFilePrincipal",
     "click #buscar_file_ambiente_menu": "triggerFileMenu",
     "click #upload_file_ambiente_menu": "subirFileMenu",
-    "click #btnGuardarDetalleAmbiente": "GuardarDetalle",
+    "click #btnGuardarDetalleAmbiente": "guardarDetalle",
+    "click #btnAsociarPrincipalAmbiente": "asociarPrincipalAmbiente",
     //input_file_ambiente_menu
 	},
   triggerFilePrincipal: function() {
@@ -79,6 +80,11 @@ var AmbienteDetalleView = Backbone.View.extend({
     );
     event.preventDefault();
   },
+  asociarPrincipalAmbiente: function(){
+    var ambiente_id = $("#lblIdAmbiente").html();
+    var imagen_principal_id = $("#imagen_principal_id").html();
+    this.model.asociarPrincipalAmbiente(ambiente_id, imagen_principal_id);
+  },
 	render: function(context) {
 		$("#btnModal").click();
 		this.$el.html(this.getTemplate());
@@ -142,7 +148,7 @@ var AmbienteDetalleView = Backbone.View.extend({
 	    this.render(context);
 		}
 	},
-  GuardarDetalle: function(){
+  guardarDetalle: function(){
     var rpta = this.model.guardar();
     rpta = JSON.parse(rpta);
 		if(rpta['tipo_mensaje'] == "error"){
@@ -155,8 +161,8 @@ var AmbienteDetalleView = Backbone.View.extend({
 			$("#txtMensajeRptaAmbienteDetalle").html(rpta['mensaje'][0]);
 			if ($("#lblIdAmbiente").html() == "E"){
 				$("#lblIdAmbiente").html(rpta['mensaje'][1]);
-				$(".modal-title").html("Editar Ambiente");
+        $(".modal-title").html("Editar Ambiente");
 			}
 		}
-  },
+  }
 });

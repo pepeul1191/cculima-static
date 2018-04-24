@@ -28,7 +28,6 @@ var AmbienteDetalleView = Backbone.View.extend({
        descripcion : "Imagen 1 descripcion"
       },
       function(mensaje){
-        console.log(mensaje);
         if(mensaje['tipo_mensaje'] == 'success'){
           $("#imagen_principal_id").html(mensaje['mensaje'][1]);
           $("#txtMensajeRptaAmbienteDetalle").html(mensaje['mensaje'][0]);
@@ -144,31 +143,31 @@ var AmbienteDetalleView = Backbone.View.extend({
 		};
     this.render(context);
 	},
-  mostrarTablaGaleria: function(){
+  mostrarTablaGaleria: function(ambiente_id){
     var array_extra_data = [
 			{tipo: "label", llave: "ambiente_id", id : "lblIdAmbiente"}
 		];
     tablaAmbienteGaleria.BorrarTable();
     var ajax_dao_ambiente_galeria = new AjaxPython();
-    ajax_dao_ambiente_galeria.Constructor("GET", BASE_URL + "ambiente/galeria/listar", "", false);
+    ajax_dao_ambiente_galeria.Constructor("GET", BASE_URL + "ambiente/galeria/listar/" + ambiente_id, "", false);
     tablaAmbienteGaleria.SetTableId("tablaAmbienteGaleria");
     tablaAmbienteGaleria.SetTableObj("tablaAmbienteGaleria");
     tablaAmbienteGaleria.SetTableHeader(ambiente_galeria_array_json_th);
     tablaAmbienteGaleria.SetTableBody(ambiente_galeria_array_json_td, ambiente_galeria_array_json_btn_td, ajax_dao_ambiente_galeria);
     tablaAmbienteGaleria.SetTableFooter(ambiente_galeria_array_json_btn, false);
     tablaAmbienteGaleria.SetLabelMensaje("#txtMensajeRpta");
-    tablaAmbienteGaleria.SetURLGuardar(BASE_URL + "ambiente/guardar");
+    tablaAmbienteGaleria.SetURLGuardar(BASE_URL + "ambiente/galeria/guardar");
     tablaAmbienteGaleria.SetExtraData(array_extra_data);
     tablaAmbienteGaleria.MostrarTable();
   },
-	renderEditar: function(evento_id) {
-		var evento = this.model.id(evento_id);
-		if (evento.status == 500){
+	renderEditar: function(ambiente_id) {
+		var ambiente = this.model.id(ambiente_id);
+		if (ambiente.status == 500){
 			alert("error en ajax");
 		}else{
-			var context = JSON.parse(evento);
-			context.id = evento_id;
-			context.titulo_modal = "Editar Evento";
+			var context = JSON.parse(ambiente);
+			context.id = ambiente_id;
+			context.titulo_modal = "Editar Ambiente";
 	    this.render(context);
 		}
 	},

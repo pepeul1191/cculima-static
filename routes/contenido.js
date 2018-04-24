@@ -6,6 +6,7 @@ var Router = Marionette.AppRouter.extend({
       "" : "index",
       "ambiente": "ambiente",
       "ambiente/crear": "ambienteCrear",
+      "ambiente/editar/:ambiente_id": "ambienteEditar",
       "concierto": "concierto",
       "exposicion": "exposicion",
       "servicio": "servicio",
@@ -28,7 +29,11 @@ var Router = Marionette.AppRouter.extend({
     },
     ambienteCrear: function() {
       ambienteDetalleView.renderCrear();
-      ambienteDetalleView.mostrarTablaGaleria();
+      ambienteDetalleView.mostrarTablaGaleria('E');
+    },
+    ambienteEditar: function(ambiente_id) {
+      ambienteDetalleView.renderEditar(ambiente_id);
+      ambienteDetalleView.mostrarTablaGaleria(ambiente_id);
     },
     concierto: function() {
       var conciertoView = new ConciertoView({});

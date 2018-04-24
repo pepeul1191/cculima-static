@@ -46,13 +46,12 @@ var Ambiente = Backbone.Model.extend({
     return usuario;
     */
   },
-  id: function(evento_id){
-    /*
+  id: function(ambiente_id){
     var rpta = null;
 		$.ajax({
    		type: "GET",
-   		url: BASE_URL + "evento/_id?",
-   		data: {_id: evento_id, csrfmiddlewaretoken: CSRF},
+   		url: BASE_URL + "ambiente/obtener/" + ambiente_id,
+   		data: {csrfmiddlewaretoken: CSRF},
    		async: false,
    		success: function(data){
 				rpta = data;
@@ -62,8 +61,8 @@ var Ambiente = Backbone.Model.extend({
 				rpta = data;
    		}
    	});
+    console.log(JSON.parse(rpta));
     return rpta;
-    */
   },
   guardar: function(){
     var externo = {

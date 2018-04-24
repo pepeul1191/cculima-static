@@ -72,24 +72,24 @@
           <div class="col-md-6">
             <div class="form-group" style="margin-bottom:10px">
               <label for="txtLongitud" style="width:100%">Foto Principal</label>
-              <label id="imagen_principal_id" class="oculto">{if isset($imgen_principal->{'id'})}{$imgen_principal->{'id'}}{/if}</label>
+              <label id="imagen_principal_id" class="oculto">{{foto_principal}}</label>
 						  <input type="file" id="input_file_ambiente_principal" name="myFile" type="file" class="oculto"/>
               <button id="buscar_file_ambiente_principal" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar </button>
               <button id="upload_file_ambiente_principal" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-upload" aria-hidden="true"></i>Subir </button>
-    					<a href=""  target="_blank" id="view_file_principal" class="btn btn-default btn-file pull-left oculto"><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
-              <button type="button" class="btn btn-default oculto" id="btnAsociarPrincipalAmbiente"><i class="fa fa-check" aria-hidden="true"></i>Asociar Imagen</button>
+    					<a href="{{foto_principal_url}}"  target="_blank" id="view_file_principal" class="btn btn-default btn-file pull-left {{#ifEquals foto_principal ''}}oculto{{/ifEquals}}"><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
+              <button type="button" class="btn btn-default {{#ifEquals foto_principal ''}}oculto{{/ifEquals}}" id="btnAsociarPrincipalAmbiente"><i class="fa fa-check" aria-hidden="true"></i>Asociar Imagen</button>
     					<progress id="progbar_principal" value="0" min="0" max="100" class="oculto" role=""></progress>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="txtLongitud" style="width:100%">Foto Menu</label>
-              <label id="imagen_menu_id" class="oculto">{if isset($imgen_principal->{'id'})}{$imgen_principal->{'id'}}{/if}</label>
+              <label id="imagen_menu_id" class="oculto">{{foto_menu}}</label>
               <input type="file" id="input_file_ambiente_menu" name="myFile" type="file" class="oculto"/>
               <button id="buscar_file_ambiente_menu" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar </button>
               <button id="upload_file_ambiente_menu" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-upload" aria-hidden="true"></i>Subir </button>
-    					<a href=""  target="_blank" id="view_file_menu" class="btn btn-default btn-file pull-left oculto"><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
-              <button type="button" class="btn btn-default oculto" id="btnAsociarMenuAmbiente"><i class="fa fa-check" aria-hidden="true"></i>Asociar Imagen</button>
+    					<a href="{{foto_menu_url}}"  target="_blank" id="view_file_menu" class="btn btn-default btn-file pull-left {{#ifEquals foto_menu ''}}oculto{{/ifEquals}}"><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
+              <button type="button" class="btn btn-default {{#ifEquals foto_menu ''}}oculto{{/ifEquals}}" id="btnAsociarMenuAmbiente"><i class="fa fa-check" aria-hidden="true"></i>Asociar Imagen</button>
     					<progress id="progbar_menu" value="0" min="0" max="100" class="oculto" role=""></progress>
             </div>
           </div>

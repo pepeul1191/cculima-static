@@ -54,5 +54,9 @@ Handlebars.registerHelper( "menuSubModulos", function (){
 });
 
 Handlebars.registerHelper('getValue', function(obj, key) {
-    return obj[key];
+  return obj[key];
+});
+
+Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });

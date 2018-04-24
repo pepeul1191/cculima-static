@@ -84,6 +84,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="txtLongitud" style="width:100%">Foto Menu</label>
+              <label id="imagen_menu_id" class="oculto">{if isset($imgen_principal->{'id'})}{$imgen_principal->{'id'}}{/if}</label>
               <input type="file" id="input_file_ambiente_menu" name="myFile" type="file" class="oculto"/>
               <button id="buscar_file_ambiente_menu" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar </button>
               <button id="upload_file_ambiente_menu" class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-upload" aria-hidden="true"></i>Subir </button>

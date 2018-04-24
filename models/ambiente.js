@@ -110,4 +110,21 @@ var Ambiente = Backbone.Model.extend({
     });
     return rpta;
   },
+  asociarMenuAmbiente: function(ambiente_id, imagen_menu_id){
+    var rpta = null;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "ambiente/asociar_imagen_menu",
+      data: {ambiente_id: ambiente_id, imagen_menu_id: imagen_menu_id ,csrfmiddlewaretoken: CSRF},
+      async: false,
+      success: function(data){
+        rpta = data;
+      },
+      error: function(data){
+        console.log("error");
+        rpta = data;
+      }
+    });
+    return rpta;
+  },
 });

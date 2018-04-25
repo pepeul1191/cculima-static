@@ -71,6 +71,18 @@ var ServicioDetalleView = Backbone.View.extend({
 		};
     this.render(context);
 	},
+  renderVer: function(servicio_id) {
+    var servicio = this.model.id(servicio_id);
+    if (servicio.status == 500){
+      alert("error en ajax");
+    }else{
+      var context = JSON.parse(servicio);
+      context.id = servicio_id;
+      context.titulo_modal = "Ver Servicio";
+      context.disabled = true;
+      this.render(context);
+    }
+  },
   guardarDetalle: function(){
     var rpta = this.model.guardar();
     rpta = JSON.parse(rpta);

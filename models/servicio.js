@@ -4,26 +4,6 @@ var Servicio = Backbone.Model.extend({
   events: {
 
 	},
-  id: function(ambiente_id){
-    /*
-    var rpta = null;
-		$.ajax({
-   		type: "GET",
-   		url: BASE_URL + "ambiente/obtener/" + ambiente_id,
-   		data: {csrfmiddlewaretoken: CSRF},
-   		async: false,
-   		success: function(data){
-				rpta = data;
-   		},
-   		error: function(data){
-				console.log("error");
-				rpta = data;
-   		}
-   	});
-    console.log(JSON.parse(rpta));
-    return rpta;
-    */
-  },
   guardar: function(){
     var externo = {
       _id: $("#lblIdServicio").html(),
@@ -65,6 +45,24 @@ var Servicio = Backbone.Model.extend({
         rpta = data;
       }
     });
+    return rpta;
+  },
+  id: function(servicio_id){
+    var rpta = null;
+    $.ajax({
+      type: "GET",
+      url: BASE_URL + "servicio/obtener/" + servicio_id,
+      data: {csrfmiddlewaretoken: CSRF},
+      async: false,
+      success: function(data){
+        rpta = data;
+      },
+      error: function(data){
+        console.log("error");
+        rpta = data;
+      }
+    });
+    console.log(JSON.parse(rpta));
     return rpta;
   },
 });

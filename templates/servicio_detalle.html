@@ -12,7 +12,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="txtNombre">Nombre</label><span class="texto-validacion"></span>
-              <input type="text" class="form-control" id="txtNombre" value="{{nombre}}" {{#if disabled}}disabled{{/if}}>
+              <input type="text" class="form-control" id="txtNombre" value="{{titulo}}" {{#if disabled}}disabled{{/if}}>
             </div>
           </div>
           <div class="col-md-6">
@@ -49,7 +49,7 @@
           <div class="col-md-6">
             <div class="form-group" style="margin-bottom:10px">
               <label style="width:100%">Foto del Servicio</label>
-              <label id="foto_id" class="oculto">{{foto}}</label>
+              <label id="foto_id" class="oculto">{{foto_id}}</label>
               <input type="file" id="input_file_foto" name="myFile" type="file" class="oculto"/>
               <button id="buscar_file_foto" {{#if disabled}}disabled{{/if}} class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar </button>
               <button id="upload_file_foto" {{#if disabled}}disabled{{/if}} class="btn btn-default btn-file pull-left"{{#if disable}}disabled{{/if}}><i class="fa fa-upload" aria-hidden="true"></i>Subir </button>

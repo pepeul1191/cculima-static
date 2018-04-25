@@ -7,6 +7,7 @@ var ServicioDetalleView = Backbone.View.extend({
     "click #btnGuardarDetalleServicio": "guardarDetalle",
     "click #buscar_file_foto": "triggerFileFoto",
     "click #upload_file_foto": "subirFileFoto",
+    "click #btnAsociarFoto": "asociarFoto",
 	},
   getTemplate: function(data) {
     var template = null;
@@ -83,8 +84,22 @@ var ServicioDetalleView = Backbone.View.extend({
       $("#txtMensajeRptaServicioDetalle").html(rpta['mensaje'][0]);
       if ($("#lblIdServicio").html() == "E"){
         $("#lblIdServicio").html(rpta['mensaje'][1]);
-        $(".modal-title").html("Editar Ambiente");
+        $(".modal-title").html("Editar Servicio");
       }
     }
-  }
+  },
+  asociarFoto: function(){
+    var servicio_id = $("#lblIdServicio").html();
+    var foto_id = $("#foto_id").html();
+    var rpta = JSON.parse(this.model.asociarFoto(servicio_id, foto_id));
+    if(rpta['tipo_mensaje'] == "error"){
+      $("#txtMensajeRptaServicioDetalle").removeClass("color-success");
+      $("#txtMensajeRptaServicioDetalle").addClass("color-rojo");
+      $("#txtMensajeRptaServicioDetalle").html(rpta['mensaje'][0]);
+    }else{
+      $("#txtMensajeRptaServicioDetalle").removeClass("color-rojo");
+      $("#txtMensajeRptaServicioDetalle").addClass("color-success");
+      $("#txtMensajeRptaServicioDetalle").html(rpta['mensaje'][0]);
+    }
+  },
 });

@@ -5,13 +5,18 @@ var vanillaCalendar = {
   label: document.querySelectorAll('[data-calendar-label="month"]')[0],
   activeDates: null,
   date: new Date(),
-  todaysDate: new Date(),
+  todaysDate: false, //new Date()
 
   init: function (options) {
     this.options = options
     this.date.setDate(1)
     this.createMonth()
     this.createListeners()
+    this.model = new VanillaCalendarModel();
+  },
+
+  verModelo: function(){
+    this.model.mostrar()
   },
 
   createListeners: function () {
@@ -63,7 +68,7 @@ var vanillaCalendar = {
   },
 
   dateClicked: function () {
-    var _this = this
+    var _this = this;
     this.activeDates = document.querySelectorAll(
       '[data-calendar-status="active"]'
     )
@@ -73,8 +78,15 @@ var vanillaCalendar = {
           '[data-calendar-label="picked"]'
         )[0]
         picked.innerHTML = this.dataset.calendarDate
-        _this.removeActiveClass()
-        this.classList.add('vcal-date--selected')
+        //esto solo hace posible unsa sola selección por mes//_this.removeActiveClass()
+        if (this.classList.contains('vcal-date--selected')) {
+          // do some stuff
+          this.classList.remove('vcal-date--selected')
+          _this.model.quitar(this.dataset.calendarDate);
+        }else{
+          this.classList.add('vcal-date--selected')
+          _this.model.agregar(this.dataset.calendarDate);
+        }
       })
     }
   },
@@ -100,18 +112,18 @@ var vanillaCalendar = {
 
   monthsAsString: function (monthIndex) {
     return [
-      'January',
-      'Febuary',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Deciembre'
     ][monthIndex]
   },
 

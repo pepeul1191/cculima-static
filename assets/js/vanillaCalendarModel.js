@@ -1,13 +1,5 @@
 var VanillaCalendarModel = Backbone.Model.extend({
   initialize: function() {
-    /*
-    this.usuario_valido = false;
-    this.usuario_lleno = false;
-    this.correo_valido = false;
-    this.contrasenia_valido = false;
-    this.datos_generales_valido = false;
-    this.datos_contrasenias_valido = false;
-    */
     this.fechas = [];
   },
   events: {
@@ -24,5 +16,12 @@ var VanillaCalendarModel = Backbone.Model.extend({
   },
   mostrar: function(){
     console.log(this.fechas);
+  },
+  existe: function(fecha){
+    var rpta = false;
+    if(_.contains(this.fechas, fecha)){
+      rpta = true;
+    }
+    return rpta;
   },
 });

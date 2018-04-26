@@ -8,11 +8,11 @@ var vanillaCalendar = {
   todaysDate: false, //new Date()
 
   init: function (options) {
+    this.model = new VanillaCalendarModel();
     this.options = options
     this.date.setDate(1)
     this.createMonth()
     this.createListeners()
-    this.model = new VanillaCalendarModel();
   },
 
   verModelo: function(){
@@ -36,7 +36,7 @@ var vanillaCalendar = {
     })
   },
 
-  createDay: function (num, day, year) {
+  createDay: function (num, day, year, _model) {
     var newDay = document.createElement('div')
     var dateEl = document.createElement('span')
     dateEl.innerHTML = num
@@ -61,6 +61,10 @@ var vanillaCalendar = {
 
     if (this.date.toString() === this.todaysDate.toString()) {
       newDay.classList.add('vcal-date--today')
+    }
+
+    if(_model.existe(this.date.toString())){
+      newDay.classList.add('vcal-date--selected');
     }
 
     newDay.appendChild(dateEl)
@@ -92,19 +96,20 @@ var vanillaCalendar = {
   },
 
   createMonth: function () {
+    var _this = this;
     var currentMonth = this.date.getMonth()
     while (this.date.getMonth() === currentMonth) {
       this.createDay(
         this.date.getDate(),
         this.date.getDay(),
-        this.date.getFullYear()
+        this.date.getFullYear(),
+        _this.model
       )
       this.date.setDate(this.date.getDate() + 1)
     }
     // while loop trips over and day is at 30/31, bring it back
     this.date.setDate(1)
     this.date.setMonth(this.date.getMonth() - 1)
-
     this.label.innerHTML =
       this.monthsAsString(this.date.getMonth()) + ' ' + this.date.getFullYear()
     this.dateClicked()

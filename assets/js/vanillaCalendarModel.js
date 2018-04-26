@@ -1,6 +1,6 @@
 var VanillaCalendarModel = Backbone.Model.extend({
-  initialize: function() {
-    this.fechas = [];
+  initialize: function(data) {
+    this.fechas = data;
   },
   events: {
 	},

@@ -8,7 +8,7 @@ var vanillaCalendar = {
   todaysDate: false, //new Date()
 
   init: function (options) {
-    this.model = new VanillaCalendarModel();
+    this.model = new VanillaCalendarModel(options.data);
     this.options = options
     this.date.setDate(1)
     this.createMonth()
@@ -36,12 +36,12 @@ var vanillaCalendar = {
     })
   },
 
-  createDay: function (num, day, year, _model) {
+  createDay: function (num, day, mes, year, _model) {
     var newDay = document.createElement('div')
     var dateEl = document.createElement('span')
     dateEl.innerHTML = num
     newDay.className = 'vcal-date'
-    newDay.setAttribute('data-calendar-date', this.date)
+    newDay.setAttribute('data-calendar-date', year + "-" + (mes + 1) + "-" + num)
 
     // if it's the first day of the month
     if (num === 1) {
@@ -51,7 +51,6 @@ var vanillaCalendar = {
         newDay.style.marginLeft = ((day - 1) * 14.28) + '%'
       }
     }
-
     if (this.options.disablePastDays && this.date.getTime() <= this.todaysDate.getTime() - 1) {
       newDay.classList.add('vcal-date--disabled')
     } else {
@@ -63,7 +62,7 @@ var vanillaCalendar = {
       newDay.classList.add('vcal-date--today')
     }
 
-    if(_model.existe(this.date.toString())){
+    if(_model.existe(year + "-" + (mes + 1) + "-" + num)){
       newDay.classList.add('vcal-date--selected');
     }
 
@@ -102,6 +101,7 @@ var vanillaCalendar = {
       this.createDay(
         this.date.getDate(),
         this.date.getDay(),
+        currentMonth,
         this.date.getFullYear(),
         _this.model
       )

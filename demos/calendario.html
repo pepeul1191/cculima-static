@@ -112,8 +112,11 @@
   <script src="../assets/js/vanillaCalendar.js"></script>
   <script>
     window.addEventListener('load', function () {
+      //var datos = ["2018-4-20", "2018-4-15", "2018-3-20", "2018-3-15"];
+      var datos = [];
       vanillaCalendar.init({
-        disablePastDays: false
+        disablePastDays: false,
+        data: datos,
       });
     })
     $("#btnModelo").click(function(event) {

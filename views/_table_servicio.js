@@ -1,7 +1,7 @@
 var servicio_array_json_th = [
 	{titulo:"id", index: "_id", estilos:"width: 10px; display:none;"},
   {titulo:"Nombre",index:"titulo",estilos:"width: 200px;"},
-	{titulo:"Botones",index:"NA",estilos:"width: 40px; padding-left: 0px;"}
+	{titulo:"Botones",index:"NA",estilos:"width: 60px; padding-left: 0px;"}
 ];
 
 var servicio_array_json_td = [
@@ -13,6 +13,7 @@ var servicio_array_json_td = [
 var servicio_array_json_btn_td = [
   {clase:"fa fa-pencil", href:"#/servicio/editar/", alt:"Editar Servicio",estilos:"padding-left: 5px;", tipo:"btn_td_href", operacion:"IrURL"},
 	{clase:"fa fa-search", href:"#/servicio/ver/", alt:"Ver Servicio",estilos:"padding-left: 5px;", tipo:"btn_td_href", operacion:"IrURL"},
+	{clase:"fa fa-times",url:"#",alt:"Eliminar Servicio",estilos:"padding-left: 10px;", operacion:"QuitarFila"},
 ];
 
 var servicio_array_json_btn = [

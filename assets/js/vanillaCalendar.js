@@ -1,14 +1,18 @@
 var vanillaCalendar = {
-  month: document.querySelectorAll('[data-calendar-area="month"]')[0],
-  next: document.querySelectorAll('[data-calendar-toggle="next"]')[0],
-  previous: document.querySelectorAll('[data-calendar-toggle="previous"]')[0],
-  label: document.querySelectorAll('[data-calendar-label="month"]')[0],
+  //month: document.querySelectorAll('[data-calendar-area="month"]')[0],
+  //next: document.querySelectorAll('[data-calendar-toggle="next"]')[0],
+  //previous: document.querySelectorAll('[data-calendar-toggle="previous"]')[0],
+  //label: document.querySelectorAll('[data-calendar-label="month"]')[0],
   activeDates: null,
   date: new Date(),
   todaysDate: false, //new Date()
 
   init: function (options) {
     this.model = new VanillaCalendarModel(options.data);
+    this.month = document.getElementById(options.month);
+    this.next = document.getElementById(options.next);
+    this.previous = document.getElementById(options.previous);
+    this.label = document.getElementById(options.label);
     this.options = options
     this.date.setDate(1)
     this.createMonth()
@@ -36,7 +40,7 @@ var vanillaCalendar = {
     })
   },
 
-  createDay: function (num, day, mes, year, _model) {
+  createDay: function (num, day, mes, year) {
     var newDay = document.createElement('div')
     var dateEl = document.createElement('span')
     dateEl.innerHTML = num
@@ -62,7 +66,7 @@ var vanillaCalendar = {
       newDay.classList.add('vcal-date--today')
     }
 
-    if(_model.existe(year + "-" + (mes + 1) + "-" + num)){
+    if(this.model.existe(year + "-" + (mes + 1) + "-" + num)){
       newDay.classList.add('vcal-date--selected');
     }
 
@@ -103,7 +107,6 @@ var vanillaCalendar = {
         this.date.getDay(),
         currentMonth,
         this.date.getFullYear(),
-        _this.model
       )
       this.date.setDate(this.date.getDate() + 1)
     }
@@ -116,20 +119,7 @@ var vanillaCalendar = {
   },
 
   monthsAsString: function (monthIndex) {
-    return [
-      'Enero',
-      'Febrero',
-      'Marzo',
-      'Abril',
-      'Mayo',
-      'Junio',
-      'Julio',
-      'Agosto',
-      'Septiembre',
-      'Octubre',
-      'Noviembre',
-      'Deciembre'
-    ][monthIndex]
+    return this.options.meses[monthIndex]
   },
 
   clearCalendar: function () {

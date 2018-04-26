@@ -69,15 +69,17 @@
       </g>
     </svg>
     <h1>Vanilla JS Calendar</h1>
+    <h1>+</h1>
+    <h1>BackboneJs</h1>
     <div id="v-cal">
       <div class="vcal-header">
-        <button class="vcal-btn" data-calendar-toggle="previous">
+        <button class="vcal-btn" data-calendar-toggle="previous" id="btnAtras">
           <i class="fa fa-chevron-left" aria-hidden="true"></i>
         </button>
-        <div class="vcal-header__label" data-calendar-label="month">
+        <div class="vcal-header__label" data-calendar-label="month" id="lblMes">
           March 2017
         </div>
-        <button class="vcal-btn" data-calendar-toggle="next">
+        <button class="vcal-btn" data-calendar-toggle="next" id="btnAdelante">
           <i class="fa fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
@@ -90,7 +92,7 @@
         <span>Sab</span>
         <span>Dom</span>
       </div>
-      <div class="vcal-body" data-calendar-area="month"></div>
+      <div class="vcal-body" data-calendar-area="month" id="bodyCadelndario"></div>
     </div>
     <p class="demo-picked">
       Date picked:
@@ -112,11 +114,29 @@
   <script src="../assets/js/vanillaCalendar.js"></script>
   <script>
     window.addEventListener('load', function () {
-      //var datos = ["2018-4-20", "2018-4-15", "2018-3-20", "2018-3-15"];
-      var datos = [];
+      var datos = ["2018-4-20", "2018-4-15", "2018-3-20", "2018-3-15"];
+      //var datos = [];
       vanillaCalendar.init({
         disablePastDays: false,
         data: datos,
+        month: "bodyCadelndario",
+        next: "btnAdelante",
+        previous: "btnAtras",
+        label: "lblMes",
+        meses: [
+          'Enero',
+          'Febrero',
+          'Marzo',
+          'Abril',
+          'Mayo',
+          'Junio',
+          'Julio',
+          'Agosto',
+          'Septiembre',
+          'Octubre',
+          'Noviembre',
+          'Deciembre'
+        ],
       });
     })
     $("#btnModelo").click(function(event) {

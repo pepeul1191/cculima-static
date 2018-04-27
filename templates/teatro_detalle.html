@@ -24,10 +24,10 @@
             <div class="col-md-3">
               <div class="form-group">
                 <label for="txtTitulo">Ambiente</label><span class="texto-validacion"></span>
-                <select class="form-control" id="cbmSistemas" {{#if disabled}}disabled{{/if}}>
+                <select class="form-control" id="cbmAmbientes" {{#if disabled}}disabled{{/if}}>
                   <option value="E"></option>
-                  {{#each usuario_sistemas}}
-                  <option value="{{sistema_id}}">{{nombre}}</option>
+                  {{#each ambientes}}
+                  <option value="{{id}}">{{nombre}}</option>
                   {{/each}}
                 </select>
               </div>

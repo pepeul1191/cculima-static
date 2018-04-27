@@ -4,13 +4,14 @@ var tablaTeatroEquipo = new Grid();
 var TeatroDetalleView = Backbone.View.extend({
   el: '#modal-container',
 	initialize: function(){
-		this.model = new Servicio();
+		this.model = new Teatro();
 	},
 	events: {
     "click #buscar_file_teatro_menu": "triggerFileMenu",
     "click #upload_file_teatro_menu": "subirFileMenu",
     "click #buscar_file_teatro_detalle": "triggerFileDetalle",
     "click #upload_file_teatro_detalle": "subirFileDetalle",
+    "click #btnGuardarDetalleTeatro": "guardarDetalle",
 	},
   triggerFileMenu: function() {
     $("#input_file_teatro_menu").trigger("click");
@@ -55,7 +56,7 @@ var TeatroDetalleView = Backbone.View.extend({
        descripcion : "Imagen 1 descripcion"
       },
       function(mensaje){
-        console.log(mensaje);
+        //console.log(mensaje);
         if(mensaje['tipo_mensaje'] == 'success'){
           $("#imagen_detalle_id").html(mensaje['mensaje'][1]);
           $("#txtMensajeRptaTeatroDetalle").html(mensaje['mensaje'][0]);
@@ -108,6 +109,7 @@ var TeatroDetalleView = Backbone.View.extend({
     var context = {
 			id: "E",
 			titulo_modal: "Crear Teatro",
+      ambientes: this.obtenerAmbientes(),
 		};
     this.render(context);
     var datos = [];
@@ -134,6 +136,22 @@ var TeatroDetalleView = Backbone.View.extend({
       ],
     });
 	},
+  obtenerAmbientes: function(){
+    var ambientesSelect;
+    $.ajax({
+	   url: BASE_URL + 'ambiente/listar_select',
+	   type: "GET",
+	   async: false,
+	   success: function(data) {
+   		if (data == "null"){
+   			ambinetesSelect = null;
+   		}else{
+   			ambinetesSelect = JSON.parse(data);
+   		}
+	   }
+		});
+    return ambinetesSelect;
+  },
   mostrarTablaElencoTeatro: function(teatro_id){
     var array_extra_data = [
       {tipo: "label", llave: "teatro_id", id : "lblIdTeatro"}
@@ -167,5 +185,22 @@ var TeatroDetalleView = Backbone.View.extend({
     tablaTeatroEquipo.SetURLGuardar(BASE_URL + "teatro/equipo/guardar");
     tablaTeatroEquipo.SetExtraData(array_extra_data);
     tablaTeatroEquipo.MostrarTable();
+  },
+  guardarDetalle: function(){
+    var rpta = this.model.guardar();
+    rpta = JSON.parse(rpta);
+    if(rpta['tipo_mensaje'] == "error"){
+      $("#txtMensajeRptaTeatroDetalle").removeClass("color-success");
+      $("#txtMensajeRptaTeatroDetalle").addClass("color-rojo");
+      $("#txtMensajeRptaTeatroDetalle").html(rpta['mensaje'][0]);
+    }else{
+      $("#txtMensajeRptaTeatroDetalle").removeClass("color-rojo");
+      $("#txtMensajeRptaTeatroDetalle").addClass("color-success");
+      $("#txtMensajeRptaTeatroDetalle").html(rpta['mensaje'][0]);
+      if ($("#lblIdTeatro").html() == "E"){
+        $("#lblIdTeatro").html(rpta['mensaje'][1]);
+        $(".modal-title").html("Editar Teatro");
+      }
+    }
   },
 });

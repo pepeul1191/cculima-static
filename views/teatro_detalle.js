@@ -13,6 +13,7 @@ var TeatroDetalleView = Backbone.View.extend({
     "click #upload_file_teatro_detalle": "subirFileDetalle",
     "click #btnGuardarDetalleTeatro": "guardarDetalle",
     "click #btnAsociarMenuTeatro": "asociarMenuTeatro",
+    "click #btnAsociarDetalleTeatro": "asociarDetalleTeatro",
 	},
   triggerFileMenu: function() {
     $("#input_file_teatro_menu").trigger("click");
@@ -209,13 +210,27 @@ var TeatroDetalleView = Backbone.View.extend({
     var imagen_menu_id = $("#imagen_menu_id").html();
     var rpta = JSON.parse(this.model.asociarMenuTeatro(teatro_id, imagen_menu_id));
     if(rpta['tipo_mensaje'] == "error"){
-      $("#txtMensajeRptaAmbienteDetalle").removeClass("color-success");
-      $("#txtMensajeRptaAmbienteDetalle").addClass("color-rojo");
-      $("#txtMensajeRptaAmbienteDetalle").html(rpta['mensaje'][0]);
+      $("#txtMensajeRptaTeatroDetalle").removeClass("color-success");
+      $("#txtMensajeRptaTeatroDetalle").addClass("color-rojo");
+      $("#txtMensajeRptaTeatroDetalle").html(rpta['mensaje'][0]);
     }else{
-      $("#txtMensajeRptaAmbienteDetalle").removeClass("color-rojo");
-      $("#txtMensajeRptaAmbienteDetalle").addClass("color-success");
-      $("#txtMensajeRptaAmbienteDetalle").html(rpta['mensaje'][0]);
+      $("#txtMensajeRptaTeatroDetalle").removeClass("color-rojo");
+      $("#txtMensajeRptaTeatroDetalle").addClass("color-success");
+      $("#txtMensajeRptaTeatroDetalle").html(rpta['mensaje'][0]);
+    }
+  },
+  asociarDetalleTeatro: function(){
+    var teatro_id = $("#lblIdTeatro").html();
+    var imagen_detalle_id = $("#imagen_detalle_id").html();
+    var rpta = JSON.parse(this.model.asociarDetalleTeatro(teatro_id, imagen_detalle_id));
+    if(rpta['tipo_mensaje'] == "error"){
+      $("#txtMensajeRptaTeatroDetalle").removeClass("color-success");
+      $("#txtMensajeRptaTeatroDetalle").addClass("color-rojo");
+      $("#txtMensajeRptaTeatroDetalle").html(rpta['mensaje'][0]);
+    }else{
+      $("#txtMensajeRptaTeatroDetalle").removeClass("color-rojo");
+      $("#txtMensajeRptaTeatroDetalle").addClass("color-success");
+      $("#txtMensajeRptaTeatroDetalle").html(rpta['mensaje'][0]);
     }
   },
 });

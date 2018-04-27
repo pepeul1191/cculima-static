@@ -23,6 +23,10 @@ var vanillaCalendar = {
     this.model.mostrar()
   },
 
+  getModelo: function(){
+    return this.model.getFechas()
+  },
+
   createListeners: function () {
     var _this = this
     this.next.addEventListener('click', function () {

@@ -66,4 +66,21 @@ var Teatro = Backbone.Model.extend({
     });
     return rpta;
   },
+  asociarCalendarioTeatro: function(teatro_id, fechas){
+    var rpta = null;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "teatro/asociar_calendario",
+      data: {teatro_id: teatro_id, fechas: JSON.stringify(fechas) ,csrfmiddlewaretoken: CSRF},
+      async: false,
+      success: function(data){
+        rpta = data;
+      },
+      error: function(data){
+        console.log("error");
+        rpta = data;
+      }
+    });
+    return rpta;
+  },
 });

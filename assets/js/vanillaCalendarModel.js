@@ -24,4 +24,7 @@ var VanillaCalendarModel = Backbone.Model.extend({
     }
     return rpta;
   },
+  getFechas: function(){
+    return this.fechas;
+  },
 });

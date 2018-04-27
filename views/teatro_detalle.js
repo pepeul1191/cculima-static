@@ -14,6 +14,7 @@ var TeatroDetalleView = Backbone.View.extend({
     "click #btnGuardarDetalleTeatro": "guardarDetalle",
     "click #btnAsociarMenuTeatro": "asociarMenuTeatro",
     "click #btnAsociarDetalleTeatro": "asociarDetalleTeatro",
+    "click #btnGuardarCalendario": "guardarCalendarioTeatro",
 	},
   triggerFileMenu: function() {
     $("#input_file_teatro_menu").trigger("click");
@@ -223,6 +224,20 @@ var TeatroDetalleView = Backbone.View.extend({
     var teatro_id = $("#lblIdTeatro").html();
     var imagen_detalle_id = $("#imagen_detalle_id").html();
     var rpta = JSON.parse(this.model.asociarDetalleTeatro(teatro_id, imagen_detalle_id));
+    if(rpta['tipo_mensaje'] == "error"){
+      $("#txtMensajeRptaTeatroDetalle").removeClass("color-success");
+      $("#txtMensajeRptaTeatroDetalle").addClass("color-rojo");
+      $("#txtMensajeRptaTeatroDetalle").html(rpta['mensaje'][0]);
+    }else{
+      $("#txtMensajeRptaTeatroDetalle").removeClass("color-rojo");
+      $("#txtMensajeRptaTeatroDetalle").addClass("color-success");
+      $("#txtMensajeRptaTeatroDetalle").html(rpta['mensaje'][0]);
+    }
+  },
+  guardarCalendarioTeatro: function(){
+    var teatro_id = $("#lblIdTeatro").html();
+    var fechas = vanillaCalendar.getModelo();
+    var rpta = JSON.parse(this.model.asociarCalendarioTeatro(teatro_id, fechas));
     if(rpta['tipo_mensaje'] == "error"){
       $("#txtMensajeRptaTeatroDetalle").removeClass("color-success");
       $("#txtMensajeRptaTeatroDetalle").addClass("color-rojo");

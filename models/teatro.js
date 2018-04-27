@@ -32,4 +32,21 @@ var Teatro = Backbone.Model.extend({
     });
     return rpta;
   },
+  asociarMenuTeatro: function(teatro_id, imagen_menu_id){
+    var rpta = null;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "teatro/asociar_imagen_menu",
+      data: {teatro_id: teatro_id, imagen_menu_id: imagen_menu_id ,csrfmiddlewaretoken: CSRF},
+      async: false,
+      success: function(data){
+        rpta = data;
+      },
+      error: function(data){
+        console.log("error");
+        rpta = data;
+      }
+    });
+    return rpta;
+  },
 });

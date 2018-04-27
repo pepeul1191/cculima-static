@@ -12,6 +12,7 @@ var TeatroDetalleView = Backbone.View.extend({
     "click #buscar_file_teatro_detalle": "triggerFileDetalle",
     "click #upload_file_teatro_detalle": "subirFileDetalle",
     "click #btnGuardarDetalleTeatro": "guardarDetalle",
+    "click #btnAsociarMenuTeatro": "asociarMenuTeatro",
 	},
   triggerFileMenu: function() {
     $("#input_file_teatro_menu").trigger("click");
@@ -201,6 +202,20 @@ var TeatroDetalleView = Backbone.View.extend({
         $("#lblIdTeatro").html(rpta['mensaje'][1]);
         $(".modal-title").html("Editar Teatro");
       }
+    }
+  },
+  asociarMenuTeatro: function(){
+    var teatro_id = $("#lblIdTeatro").html();
+    var imagen_menu_id = $("#imagen_menu_id").html();
+    var rpta = JSON.parse(this.model.asociarMenuTeatro(teatro_id, imagen_menu_id));
+    if(rpta['tipo_mensaje'] == "error"){
+      $("#txtMensajeRptaAmbienteDetalle").removeClass("color-success");
+      $("#txtMensajeRptaAmbienteDetalle").addClass("color-rojo");
+      $("#txtMensajeRptaAmbienteDetalle").html(rpta['mensaje'][0]);
+    }else{
+      $("#txtMensajeRptaAmbienteDetalle").removeClass("color-rojo");
+      $("#txtMensajeRptaAmbienteDetalle").addClass("color-success");
+      $("#txtMensajeRptaAmbienteDetalle").html(rpta['mensaje'][0]);
     }
   },
 });

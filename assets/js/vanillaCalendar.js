@@ -90,7 +90,6 @@ var vanillaCalendar = {
         )[0]
         picked.innerHTML = this.dataset.calendarDate
         //esto solo hace posible unsa sola selección por mes//_this.removeActiveClass()
-        console.log(_this.options);
         if(_this.options.disabled != true){
           if (this.classList.contains('vcal-date--selected')) {
             // do some stuff

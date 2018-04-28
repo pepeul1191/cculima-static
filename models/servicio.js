@@ -62,7 +62,6 @@ var Servicio = Backbone.Model.extend({
         rpta = data;
       }
     });
-    console.log(JSON.parse(rpta));
     return rpta;
   },
 });

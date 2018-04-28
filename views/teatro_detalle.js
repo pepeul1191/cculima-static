@@ -113,6 +113,8 @@ var TeatroDetalleView = Backbone.View.extend({
 			id: "E",
 			titulo_modal: "Crear Teatro",
       ambientes: this.obtenerAmbientes(),
+      foto_menu: "",
+      foto_detalle: "",
 		};
     this.render(context);
     var datos = [];
@@ -149,7 +151,6 @@ var TeatroDetalleView = Backbone.View.extend({
       context.id = teatro_id;
       context.titulo_modal = "Editar Teatro";
       context.ambientes = this.obtenerAmbientes();
-      console.log(context);
       this.render(context);
       var datos = this.model.obtenerCalendario(teatro_id);
       vanillaCalendar.init({

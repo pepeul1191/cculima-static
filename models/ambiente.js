@@ -61,7 +61,6 @@ var Ambiente = Backbone.Model.extend({
 				rpta = data;
    		}
    	});
-    console.log(JSON.parse(rpta));
     return rpta;
   },
   guardar: function(){

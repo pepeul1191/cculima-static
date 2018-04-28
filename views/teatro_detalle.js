@@ -147,8 +147,9 @@ var TeatroDetalleView = Backbone.View.extend({
     }else{
       var context = JSON.parse(teatro);
       context.id = teatro_id;
-      context.titulo_modal = "Editar Ambiente";
+      context.titulo_modal = "Editar Teatro";
       context.ambientes = this.obtenerAmbientes();
+      console.log(context);
       this.render(context);
       var datos = this.model.obtenerCalendario(teatro_id);
       vanillaCalendar.init({
@@ -183,7 +184,7 @@ var TeatroDetalleView = Backbone.View.extend({
     }else{
       var context = JSON.parse(teatro);
       context.id = teatro_id;
-      context.titulo_modal = "Ver Ambiente";
+      context.titulo_modal = "Ver Teatro";
       context.ambientes = this.obtenerAmbientes();
       context.disabled = true;
       this.render(context);

@@ -26,9 +26,7 @@
                 <label for="txtTitulo">Ambiente</label><span class="texto-validacion"></span>
                 <select class="form-control" id="cbmAmbientes" {{#if disabled}}disabled{{/if}}>
                   <option value="E"></option>
-                  {{#each ambientes}}
-                  <option value="{{id}}">{{nombre}}</option>
-                  {{/each}}
+                  {{#fillSelect ambientes lugar}}{{/fillSelect}}
                 </select>
               </div>
             </div>

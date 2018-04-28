@@ -92,7 +92,6 @@ var Teatro = Backbone.Model.extend({
       async: false,
       success: function(data){
         rpta = JSON.parse(data);
-        console.log(rpta);
       },
       error: function(data){
         console.log("error");

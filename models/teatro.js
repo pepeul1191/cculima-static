@@ -83,4 +83,40 @@ var Teatro = Backbone.Model.extend({
     });
     return rpta;
   },
+  obtenerCalendario: function(teatro_id){
+    var rpta = null;
+    $.ajax({
+      type: "GET",
+      url: BASE_URL + "teatro/obtener_calendario/" + teatro_id,
+      data: {csrfmiddlewaretoken: CSRF},
+      async: false,
+      success: function(data){
+        rpta = JSON.parse(data);
+        console.log(rpta);
+      },
+      error: function(data){
+        console.log("error");
+        rpta = data;
+      }
+    });
+    return rpta;
+  },
+  id: function(teatro_id){
+    var rpta = null;
+    $.ajax({
+      type: "GET",
+      url: BASE_URL + "teatro/obtener/" + teatro_id,
+      data: {csrfmiddlewaretoken: CSRF},
+      async: false,
+      success: function(data){
+        rpta = data;
+      },
+      error: function(data){
+        console.log("error");
+        rpta = data;
+      }
+    });
+    console.log(JSON.parse(rpta));
+    return rpta;
+  },
 });

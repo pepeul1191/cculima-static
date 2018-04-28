@@ -20,6 +20,7 @@ var Router = Marionette.AppRouter.extend({
       "stand_up": "stand_up",
       "teatro": "teatro",
       "teatro/crear": "teatroCrear",
+      "teatro/editar/:teatro_id": "teatroEditar",
       "*actions" : "index"
     },
     showEmail: function(email) {
@@ -84,6 +85,11 @@ var Router = Marionette.AppRouter.extend({
       teatroDetalleView.renderCrear();
       teatroDetalleView.mostrarTablaElencoTeatro('E');
       teatroDetalleView.mostrarTablaEquipoTeatro('E');
+    },
+    teatroEditar: function(teatro_id) {
+      teatroDetalleView.renderEditar(teatro_id);
+      teatroDetalleView.mostrarTablaElencoTeatro(teatro_id);
+      teatroDetalleView.mostrarTablaEquipoTeatro(teatro_id);
     },
 });
 

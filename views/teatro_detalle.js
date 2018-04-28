@@ -139,6 +139,41 @@ var TeatroDetalleView = Backbone.View.extend({
       ],
     });
 	},
+  renderEditar: function(teatro_id) {
+    var teatro = this.model.id(teatro_id);
+    if (teatro.status == 500){
+      alert("error en ajax");
+    }else{
+      var context = JSON.parse(teatro);
+      context.id = teatro_id;
+      context.titulo_modal = "Editar Ambiente";
+      context.ambientes = this.obtenerAmbientes();
+      this.render(context);
+      var datos = this.model.obtenerCalendario(teatro_id);
+      vanillaCalendar.init({
+        disablePastDays: false,
+        data: datos,
+        month: "bodyCadelndario",
+        next: "btnAdelante",
+        previous: "btnAtras",
+        label: "lblMes",
+        meses: [
+          'Enero',
+          'Febrero',
+          'Marzo',
+          'Abril',
+          'Mayo',
+          'Junio',
+          'Julio',
+          'Agosto',
+          'Septiembre',
+          'Octubre',
+          'Noviembre',
+          'Deciembre'
+        ],
+      });
+    }
+  },
   obtenerAmbientes: function(){
     var ambientesSelect;
     $.ajax({

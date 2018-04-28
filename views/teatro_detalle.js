@@ -137,6 +137,7 @@ var TeatroDetalleView = Backbone.View.extend({
         'Noviembre',
         'Deciembre'
       ],
+      disabled: false,
     });
 	},
   renderEditar: function(teatro_id) {
@@ -171,6 +172,44 @@ var TeatroDetalleView = Backbone.View.extend({
           'Noviembre',
           'Deciembre'
         ],
+        disabled: false,
+      });
+    }
+  },
+  renderVer: function(teatro_id) {
+    var teatro = this.model.id(teatro_id);
+    if (teatro.status == 500){
+      alert("error en ajax");
+    }else{
+      var context = JSON.parse(teatro);
+      context.id = teatro_id;
+      context.titulo_modal = "Ver Ambiente";
+      context.ambientes = this.obtenerAmbientes();
+      context.disabled = true;
+      this.render(context);
+      var datos = this.model.obtenerCalendario(teatro_id);
+      vanillaCalendar.init({
+        disablePastDays: false,
+        data: datos,
+        month: "bodyCadelndario",
+        next: "btnAdelante",
+        previous: "btnAtras",
+        label: "lblMes",
+        meses: [
+          'Enero',
+          'Febrero',
+          'Marzo',
+          'Abril',
+          'Mayo',
+          'Junio',
+          'Julio',
+          'Agosto',
+          'Septiembre',
+          'Octubre',
+          'Noviembre',
+          'Deciembre'
+        ],
+        disabled: true,
       });
     }
   },
@@ -207,6 +246,23 @@ var TeatroDetalleView = Backbone.View.extend({
     tablaTeatroElenco.SetExtraData(array_extra_data);
     tablaTeatroElenco.MostrarTable();
   },
+  mostrarTablaElencoTeatroVer: function(teatro_id){
+    var array_extra_data = [
+      {tipo: "label", llave: "teatro_id", id : "lblIdTeatro"}
+    ];
+    tablaTeatroElenco.BorrarTable();
+    var ajax_dao_teatro_elenco = new AjaxPython();
+    ajax_dao_teatro_elenco.Constructor("GET", BASE_URL + "teatro/elenco/listar/" + teatro_id, "", false);
+    tablaTeatroElenco.SetTableId("tablaTeatroElenco");
+    tablaTeatroElenco.SetTableObj("tablaTeatroElenco");
+    tablaTeatroElenco.SetTableHeader(teatro_elenco_array_json_th);
+    tablaTeatroElenco.SetTableBody(teatro_elenco_array_json_td, teatro_elenco_array_json_btn_td_ver, ajax_dao_teatro_elenco);
+    tablaTeatroElenco.SetTableFooter(teatro_elenco_array_json_btn_ver, false);
+    tablaTeatroElenco.SetLabelMensaje("#txtMensajeRptaTeatroDetalle");
+    tablaTeatroElenco.SetURLGuardar(BASE_URL + "teatro/elenco/guardar");
+    tablaTeatroElenco.SetExtraData(array_extra_data);
+    tablaTeatroElenco.MostrarTable();
+  },
   mostrarTablaEquipoTeatro: function(teatro_id){
     var array_extra_data = [
       {tipo: "label", llave: "teatro_id", id : "lblIdTeatro"}
@@ -219,6 +275,23 @@ var TeatroDetalleView = Backbone.View.extend({
     tablaTeatroEquipo.SetTableHeader(teatro_equipo_array_json_th);
     tablaTeatroEquipo.SetTableBody(teatro_equipo_array_json_td, teatro_equipo_array_json_btn_td, ajax_dao_teatro_equipo);
     tablaTeatroEquipo.SetTableFooter(teatro_equipo_array_json_btn, false);
+    tablaTeatroEquipo.SetLabelMensaje("#txtMensajeRptaTeatroDetalle");
+    tablaTeatroEquipo.SetURLGuardar(BASE_URL + "teatro/equipo/guardar");
+    tablaTeatroEquipo.SetExtraData(array_extra_data);
+    tablaTeatroEquipo.MostrarTable();
+  },
+  mostrarTablaEquipoTeatroVer: function(teatro_id){
+    var array_extra_data = [
+      {tipo: "label", llave: "teatro_id", id : "lblIdTeatro"}
+    ];
+    tablaTeatroEquipo.BorrarTable();
+    var ajax_dao_teatro_equipo = new AjaxPython();
+    ajax_dao_teatro_equipo.Constructor("GET", BASE_URL + "teatro/equipo/listar/" + teatro_id, "", false);
+    tablaTeatroEquipo.SetTableId("tablaTeatroEquipo");
+    tablaTeatroEquipo.SetTableObj("tablaTeatroEquipo");
+    tablaTeatroEquipo.SetTableHeader(teatro_equipo_array_json_th);
+    tablaTeatroEquipo.SetTableBody(teatro_equipo_array_json_td, teatro_equipo_array_json_btn_td_ver, ajax_dao_teatro_equipo);
+    tablaTeatroEquipo.SetTableFooter(teatro_equipo_array_json_btn_ver, false);
     tablaTeatroEquipo.SetLabelMensaje("#txtMensajeRptaTeatroDetalle");
     tablaTeatroEquipo.SetURLGuardar(BASE_URL + "teatro/equipo/guardar");
     tablaTeatroEquipo.SetExtraData(array_extra_data);

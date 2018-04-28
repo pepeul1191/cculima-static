@@ -48,30 +48,39 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-5">
             <div class="form-group">
               <label for="txtOrganizador">Organizador</label><span class="texto-validacion"></span>
               <input type="text" class="form-control" id="txtOrganizador" value="{{organizador}}" {{#if disabled}}disabled{{/if}}>
             </div>
+          </div>
+          <div class="col-md-2">
             <div class="form-group">
               <label for="txtComienza">Comienza</label><span class="texto-validacion"></span>
               <input type="text" class="form-control" id="txtComienza" value="{{comienza}}" {{#if disabled}}disabled{{/if}}>
             </div>
+          </diV>
+          <div class="col-md-2">
             <div class="form-group">
               <label for="txtFinaliza">Finaliza</label><span class="texto-validacion"></span>
               <input type="text" class="form-control" id="txtFinaliza" value="{{finaliza}}" {{#if disabled}}disabled{{/if}}>
             </div>
+          </div>
+          <div class="col-md-3">
             <div class="form-group">
-              <button type="button" class="btn btn-default pull-right" id="btnGuardarDetalleTeatro" {{#if disabled}}disabled{{/if}}><i class="fa fa-check" aria-hidden="true"></i>Guardar Cambios</button>
+              <button type="button" class="btn btn-default pull-right" style="margin-top: 20px;" id="btnGuardarDetalleTeatro" {{#if disabled}}disabled{{/if}}><i class="fa fa-check" aria-hidden="true"></i>Guardar Cambios</button>
             </div>
           </div>
-          <div class="col-md-4">
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
             <div class="form-group">
               <label for="txtElenco">Elenco</label><span class="texto-validacion"></span>
               <table class="list issues" style="" id="tablaTeatroElenco"></table>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="form-group">
               <label for="txtEquipo">Equipo</label><span class="texto-validacion"></span>
               <table class="list issues" style="" id="tablaTeatroEquipo"></table>

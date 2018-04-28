@@ -90,13 +90,16 @@ var vanillaCalendar = {
         )[0]
         picked.innerHTML = this.dataset.calendarDate
         //esto solo hace posible unsa sola selección por mes//_this.removeActiveClass()
-        if (this.classList.contains('vcal-date--selected')) {
-          // do some stuff
-          this.classList.remove('vcal-date--selected')
-          _this.model.quitar(this.dataset.calendarDate);
-        }else{
-          this.classList.add('vcal-date--selected')
-          _this.model.agregar(this.dataset.calendarDate);
+        console.log(_this.options);
+        if(_this.options.disabled != true){
+          if (this.classList.contains('vcal-date--selected')) {
+            // do some stuff
+            this.classList.remove('vcal-date--selected')
+            _this.model.quitar(this.dataset.calendarDate);
+          }else{
+            this.classList.add('vcal-date--selected')
+            _this.model.agregar(this.dataset.calendarDate);
+          }
         }
       })
     }

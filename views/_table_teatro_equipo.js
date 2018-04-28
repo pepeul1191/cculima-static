@@ -20,6 +20,8 @@ var teatro_equipo_array_json_btn = [
 ];
 
 
-var teatro_equipo_array_json_btn_td_ver = [];
+var teatro_equipo_array_json_btn_td_ver = [
+  {clase:"fa fa-search",url:"",alt:"Ver archivo",estilos:"padding-left: 25px;display:none", operacion:"VerArchivoTab", 'td_archivo_id': 2, 'url': BASE_URL + 'ambiente/galeria/obtener_ruta_foto/'},
+];
 
 var teatro_equipo_array_json_btn_ver = [];

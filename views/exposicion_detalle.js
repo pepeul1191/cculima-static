@@ -136,12 +136,11 @@ var ExposicionDetalleView = Backbone.View.extend({
     });
 	},
   renderEditar: function(exposicion_id) {
-    /*
-    var teatro = this.model.id(exposicion_id);
-    if (teatro.status == 500){
+    var exposicion = this.model.id(exposicion_id);
+    if (exposicion.status == 500){
       alert("error en ajax");
     }else{
-      var context = JSON.parse(teatro);
+      var context = JSON.parse(exposicion);
       context.id = exposicion_id;
       context.titulo_modal = "Editar Exposicion";
       context.ambientes = this.obtenerAmbientes();
@@ -171,10 +170,8 @@ var ExposicionDetalleView = Backbone.View.extend({
         disabled: false,
       });
     }
-    */
   },
   renderVer: function(exposicion_id) {
-    /*
     var teatro = this.model.id(exposicion_id);
     if (teatro.status == 500){
       alert("error en ajax");
@@ -210,7 +207,6 @@ var ExposicionDetalleView = Backbone.View.extend({
         disabled: true,
       });
     }
-    */
   },
   obtenerAmbientes: function(){
     var ambientesSelect;

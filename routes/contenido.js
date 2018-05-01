@@ -2,6 +2,7 @@ var ambienteDetalleView = new AmbienteDetalleView({});
 var servicioDetalleView = new ServicioDetalleView({});
 var teatroDetalleView = new TeatroDetalleView({});
 var exposicionDetalleView = new ExposicionDetalleView({});
+var conciertoDetalleView = new ConciertoDetalleView({});
 
 var Router = Marionette.AppRouter.extend({
     routes: {
@@ -26,6 +27,9 @@ var Router = Marionette.AppRouter.extend({
       "exposicion/crear": "exposicionCrear",
       "exposicion/editar/:exposicion_id": "exposicionEditar",
       "exposicion/ver/:exposicion_id": "exposicionVer",
+      "concierto/crear": "conciertoCrear",
+      "concierto/editar/:concierto_id": "conciertoEditar",
+      "concierto/ver/:concierto_id": "conciertoVer",
       "*actions" : "index"
     },
     showEmail: function(email) {
@@ -109,6 +113,15 @@ var Router = Marionette.AppRouter.extend({
     },
     exposicionVer: function(exposicion_id) {
       exposicionDetalleView.renderVer(exposicion_id);
+    },
+    conciertoCrear: function() {
+      conciertoDetalleView.renderCrear();
+    },
+    conciertoEditar: function(concierto_id) {
+      conciertoDetalleView.renderEditar(concierto_id);
+    },
+    conciertoVer: function(concierto_id) {
+      conciertoDetalleView.renderVer(concierto_id);
     },
 });
 

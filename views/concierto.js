@@ -34,7 +34,7 @@ var ConciertoView = Backbone.View.extend({
    	tablaConcierto.SetTableBody(concierto_array_json_td, concierto_array_json_btn_td, ajax_dao_concierto);
    	tablaConcierto.SetTableFooter(concierto_array_json_btn, false);
    	tablaConcierto.SetLabelMensaje("#txtMensajeRpta");
-   	tablaConcierto.SetURLGuardar(BASE_URL + "alumno/guardar");
+   	tablaConcierto.SetURLGuardar(BASE_URL + "concierto/guardar");
    	tablaConcierto.MostrarTable();
 	}
 });

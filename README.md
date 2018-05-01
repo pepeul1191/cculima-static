@@ -6,7 +6,7 @@ Descargas dependencias:
 
 Crear 'dist' con Gulp:
 
-    $ gulp libs
+    $ gulp fonts contenido
 
 Arrancar aplicación servidor:
 
